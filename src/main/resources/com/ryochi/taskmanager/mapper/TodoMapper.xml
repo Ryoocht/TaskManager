@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ryochi.taskmanager.mapper.TodoMapper">
+	<select id="selectIncomplete" resultType="com.ryochi.taskmanager.entities.Todo">
+		SELECT * FROM `todo_items` WHERE done_flag = 0
+	</select>
+	
+	<select id="selectComplete" resultType="com.ryochi.taskmanager.entities.Todo">
+		SELECT * FROM `todo_items` WHERE done_flag = 1
+	</select>
+	
+	<insert id="add" useGeneratedKeys="true" keyProperty="id" parameterType="com.ryochi.taskmanager.entities.Todo">
+		INSERT INTO `todo_items` (title,due_date) VALUES (#{title},#{due_date})
+	</insert>
+	
+	<update id="update" parameterType="com.ryochi.taskmanager.entities.Todo">
+		UPDATE `todo_items` SET 
+		title = '${title}',
+		due_date = '${due_date}',
+		done_flag = '${done_flag}' WHERE id = '${id}'
+	</update>
+	
+	<delete id="delete" parameterType="com.ryochi.taskmanager.entities.Todo">
+		DELETE FROM `todo_items` WHERE done_flag = 1
+	</delete>
+</mapper>

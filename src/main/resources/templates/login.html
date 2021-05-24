@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" th:href="@{/css/login.css}"/>
+<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Montserrat'/>
+<title>User Login</title>
+</head>
+<body>
+	<div class="login">
+		<div class="title-header"><h1>Task Manager</h1></div>
+	  	<h2 class="active"> sign in </h2>
+	  	<form th:action="@{/authenticate}" method="post">
+			<input type="text" id="user" name="userName" 
+				   class="text" required="required"/>
+	     	<span>username</span>
+	    	<br>
+	    	<br>
+	    	<input type="password" id="password" name="password" 
+				   class="text" required="required"/>
+	    	<span>password</span>
+	    	<br>
+	    	<button type="submit" class="signin">Login</button>
+	    	<p><a href="/RegistrationForm">Sign up</a></p>
+	    	<hr>
+	  </form>
+	</div>
+</body>
+</html> 

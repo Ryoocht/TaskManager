@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ryochi.taskmanager.mapper.RegisterMemberMapper">
+	<insert id="insertMemberInfo" parameterType="com.ryochi.taskmanager.entities.MemberRegistration">
+		INSERT INTO user_login(name, password) VALUES(#{userName}, #{password})
+	</insert>
+</mapper>
