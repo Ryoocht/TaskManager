@@ -1,6 +1,9 @@
 # About TaskManager
 A simple web application to manage tasks.
 
+- Implemented user login authentication using Spring security in Spring boot. Provides membership registration and login functions.
+- Using MySQL, it implements all functions of user registration, acquisition of existing user information, addition, update, and deletion of ToDo list. 
+
 ## Table of content
 - [Prerequisites](#prerequisites)
   - [Plugins / Dependencies](#plugins-dependencies)
