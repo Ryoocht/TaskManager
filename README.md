@@ -38,7 +38,7 @@ A simple web application to manage tasks.
     - templates
 ---
 <a id="login-page"></a>
-### Login Page
+## Login Page
 ![2021-05-25 (2)](https://user-images.githubusercontent.com/14501804/119484222-24cd1c80-bd99-11eb-8903-ae2d63438df0.png)
 - #### Login Configuration (WebSecurityConfig.java)
    - Inherit WebSecurityConfigurerAdapter and authenticate inserted user data.
@@ -89,5 +89,5 @@ A simple web application to manage tasks.
 ---
 
 <a id="todo-page"></a>
-### Todo Page
+## Todo Page
 ---
