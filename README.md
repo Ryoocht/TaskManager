@@ -1,5 +1,9 @@
 # About TaskManager
-A simple web application to manage tasks [Todo list app].
+A simple web application to manage tasks.
+
+## Table of content
+<!-- START doctoc -->
+<!-- END doctoc -->
 
 ## Prerequisites
 - Java 15
@@ -26,3 +30,6 @@ A simple web application to manage tasks [Todo list app].
     - mapper
     - static
     - templates
+
+### Login Page
+### Todo Page
