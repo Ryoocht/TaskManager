@@ -39,7 +39,8 @@ A simple web application to manage tasks.
 ---
 <a id="login-page"></a>
 ### Login Page
-  #### Login Configuration (WebSecurityConfig.java)
+![2021-05-25 (2)](https://user-images.githubusercontent.com/14501804/119484222-24cd1c80-bd99-11eb-8903-ae2d63438df0.png)
+- #### Login Configuration (WebSecurityConfig.java)
    - Inherit WebSecurityConfigurerAdapter and authenticate inserted user data.
    - Hashing password
   ~~~
@@ -52,9 +53,39 @@ A simple web application to manage tasks.
 		return new BCryptPasswordEncoder();
 	} 
   ~~~
-  #### Login Controllers (LoginController.java/ MemberRegistrationController.java)
-  - LoginController
-      Show login form
+- #### Login Controllers (LoginController.java/ MemberRegistrationController.java)
+  - MemberRegistrationController:
+  	Take input data into MemberRegistrationForm and jump to RegistrationForm
+	When user data is authenticated Jump to Result
+- #### Login Entities (Account.java / DbUserDetails.java / MemberRegistration.java / MemberRegistrationForm.java)
+	- Account: Store member information required for login 
+	- DbUserDetails: Obtain user information from DB
+	- MemeberRegistration: Store the value to be put in DB
+	- MemeberRegistrationForm: Store the value entered in the membership registration form
+- #### Login Mapper (LoginMapper.java / RegisterMemberMaper.java)
+	- LoginMapper: Get name and password from user_login(DB)
+	- RegisterMemberMaper: Insert user info into user_login(DB)
+- #### Login Services (DbUserDetailsService.java / RegisterMemberService.java)
+	- DbUserDetailsService: Get user information from DB
+  ~~~
+    @Override
+    @Transactional(readOnly = true)
+    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+          Account account = Optional.ofNullable(loginMapper.findAccount(userName))
+                  .orElseThrow(() -> new UsernameNotFoundException("User not found."));
+          return new DbUserDetails(account, getAuthorities(account));
+      }
+  ~~~
+	- RegisterMemberService: Hashing a password and insert it into DB
+  ~~~
+    public void registermemeber(MemberRegistration entity) {
+    	entity.setPassword(passwordEncoder.encode(entity.getPassword()));
+    	registerMemberMapper.insertMemberInfo(entity);
+    }
+  ~~~
+	- Login Mapper(LoginMapper.xml / RegisterMapper.xml)
+	- Login Style Sheet (login.css)
+	- Login templates (login.html / RegistrationForm.html / Result.html)
 ---
 
 <a id="todo-page"></a>
